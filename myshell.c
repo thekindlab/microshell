@@ -19,62 +19,86 @@
 void processline (char *line);
 ssize_t getinput(char** line, size_t* size);
 
-/* main
- * This function is the main entry point to the program.  This is essentially
- * the primary read-eval-print loop of the command interpreter.
- */
 
+/*
+* main
+*
+* Main entry point of the myshell program.
+* This is essentially the primary read-eval-print loop of the command interpreter.
+*
+* Runs the shell in an endless loop until an exit command is issued.
+*
+* Hint: Use getinput and processline as appropriate.
+*/
 int main () {
 
  //write your code
- //use getinput and processline as appropriate
 
   return EXIT_SUCCESS;
 }
 
 
-/* getinput
-* line     A pointer to a char* that points at a buffer of size *size or NULL.
-* size     The size of the buffer *line or 0 if *line is NULL.
-* returns  The length of the string stored in *line.
+/*
+* getinput
 *
-* This function prompts the user for input, e.g., %myshell%.  If the input fits in the buffer
-* pointed to by *line, the input is placed in *line.  However, if there is not
-* enough room in *line, *line is freed and a new buffer of adequate space is
-* allocated.  The number of bytes allocated is stored in *size. 
+* Prompts the user for a line of input (e.g. %myshell%) and stores it in a dynamically
+* allocated buffer (pointed to by *line).
+* If input fits in the buffer, it is stored in *line.
+* If the buffer is too small, *line is freed and a larger buffer is allocated.
+* The size of the buffer is stored in *size.
+*
+* Args:
+*   line: pointer to a char* that will be set to the address of the input buffer
+*   size: pointer to a size_t that will be set to the size of the allocated buffer
+*
+* Returns:
+*   The length of the input line, or -1 if EOF was encountered.
+*
 * Hint: There is a standard i/o function that can make getinput easier than it sounds.
 */
 ssize_t getinput(char** line, size_t* size) {
 
   ssize_t len = 0;
-  
-  
+
+
   //write your code
 
   return len;
 }
 
 
-/* processline
- * The parameter line is interpreted as a command name.  This function creates a
- * new process that executes that command.
- * Note the three cases of the switch: fork failed, fork succeeded and this is
- * the child, fork succeeded and this is the parent (see fork(2)).
- * processline only forks when the line is not empty, and the line is not trying to run a built in command
- */
+/*
+* processline
+*
+* Interprets the input line as a command and either executes it as a built-in
+* or forks a child process to execute an external program.
+* Built-in commands are executed immediately.
+* External commands are parsed then forked to be executed.
+*
+* Args:
+*   line: string containing a shell command and arguments
+*
+* Note: There are three cases to consider when forking a child process:
+*   1. Fork fails
+*   2. Fork succeeds and this is the child process
+*   3. Fork succeeds and this is the parent process
+*
+* Hint: See the man page for fork(2) for more information.
+* Hint: The process should only fork when the line is not empty and not trying to
+*       run a built-in command.
+*/
 void processline (char *line)
 {
  /*check whether line is empty*/
   //write your code
-    
+
   pid_t cpid;
   int   status;
   int argCount;
   char** arguments = argparse(line, &argCount);
-  
+
   /*check whether arguments are builtin commands
    *if not builtin, fork to execute the command.
    */
     //write your code
 }
-
