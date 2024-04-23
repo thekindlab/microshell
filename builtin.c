@@ -19,12 +19,6 @@ static void cd(char** args, int argpcp);
 static void pwd(char** args, int argcp);
 
 
-/* builtIn
- ** built in checks each built in command the given command, if the given command
- * matches one of the built in commands, that command is called and builtin returns 1.
- *If none of the built in commands match the wanted command, builtin returns 0;
-  */
-
 /*
 * builtIn
 *
