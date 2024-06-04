@@ -35,6 +35,8 @@ static void pwd(char** args, int argcp);
 * being forked to a new process. This function compares the given command
 * to each of the built-ins (exit, pwd, cd, and ls/cp/env or stat/tail/touch
 * depending on group). If a match is found, the corresponding function is called.
+*
+* Hint: Refer to checklist for group specific examples
 */
 int builtIn(char** args, int argcp)
 {
