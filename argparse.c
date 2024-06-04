@@ -56,8 +56,8 @@ static int argCount(char*line)
 *   An array of strings (one per argument). The first string is the command.
 *
 * Example:
-*   argparse("ls -l /home", &argc) might return ["ls", "-l", "/home"] and set argc to 3
-*   argparse("   ls    -l   /home  ", &argc) might return ["ls", "-l", "/home"] and set argc to 3
+*   argparse("ls -l /home", &argc) --> returns ["ls", "-l", "/home"] and set argc to 3
+*   argparse("   ls    -l   /home  ", &argc) --> returns ["ls", "-l", "/home"] and set argc to 3
 */
 char** argparse(char* line, int* argcp)
 {
