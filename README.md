@@ -8,8 +8,15 @@
 5. Inspect code to find defects and suggest solutions.
 6. Evaluate memory management using Valgrind.
 
-## Overview/Program Structure
+## Overview
 Create a microshell, myshell, that adheres to the following requirements. The program will be written in C. myshell will parse the user input. myshell has its own set of built-in commands.
+
+### myshell Features
+- myshell will read the user input from stdin, one line at a time. Each line contains only one command and its arguments if it takes arguments, e.g., `mv file1 file2`. `mv` is the command, and `file1` and `file2` are the arguments.
+- myshell will parse the user input into a list of arguments. Assume that only whitespaces are used to separate the arguments from each other. Multiple whitespaces should be handled. For example, the input "cat filename" should be parsed and accepted as a valid command. Assume no quoting or backslash escaping will be used. No other special characters are expected to be handled.
+- myshell will execute the command. If the input is one of myshell’s built-in commands, myshell will call its corresponding user function. Otherwise, it will execute the default Unix command.
+- myshell will be terminated if the user enters the command “exit”.
+- myshell will parse the line (user input) to separate it into an array of strings.
 
 ### Program Structure
 - **Program myshell** made from `myshell.o`, `argparse.o`, and `builtin.o`
@@ -17,7 +24,7 @@ Create a microshell, myshell, that adheres to the following requirements. The pr
 - `argparse.c` includes `argparse.h`
 - `builtin.c` includes `builtin.h`
 
-## Instructions/Function Requirements
+## Setup and Functional Requirements
 
 1. **Download the zipfile LINK (github classroom?)**
 2. Your implementation files MUST be named `myshell.c`, `argparse.c`, `argparse.h`, `builtin.c`, `builtin.h`
@@ -28,11 +35,6 @@ Create a microshell, myshell, that adheres to the following requirements. The pr
 
 ### myshell.c
 - The driver of the program. It contains `main()` and calls functions from other files as appropriate. It should launch the program, keep running until the user passes the command “exit”. It should determine whether to call a builtin function or a process.
-- myshell will read the user input from stdin, one line at a time. Each line contains only one command and its arguments if it takes arguments, e.g., `mv file1 file2`. `mv` is the command, and `file1` and `file2` are the arguments.
-- myshell will parse the user input into a list of arguments. Assume that only whitespaces are used to separate the arguments from each other. Multiple whitespaces should be handled. For example, the input "cat filename" should be parsed and accepted as a valid command. Assume no quoting or backslash escaping will be used. No other special characters are expected to be handled.
-- myshell will execute the command. If the input is one of myshell’s built-in commands, myshell will call its corresponding user function. Otherwise, it will execute the default Unix command.
-- myshell will be terminated if the user enters the command “exit”.
-- myshell will parse the line (user input) to separate it into an array of strings.
 
 ### argparse.c
 - Contains the functions needed to parse the input (a set of strings) assuming that whitespace is the only delimiter. Assume that only whitespaces are used to separate the arguments from each other. Multiple whitespaces should be handled. For example, the input "cat filename" should be parsed and accepted as a valid command. Assume no quoting or backslash escaping will be used.
@@ -194,7 +196,6 @@ Change: Thu Feb 22 21:34:26 2024
 username@linux-01: ~/Project2$ ./myshell
 %tail test1.txt
 
-
 Three
 Four
 Five
@@ -206,10 +207,8 @@ Ten
 Eleven
 Twelve
 
-username@linux-01: ~/Project2/folder1$ ./myshell
 %tail test1.txt test2.txt
 Filename: test1.txt
-
 
 Three
 Four
@@ -284,7 +283,7 @@ You are allowed to use (depending on your Built-In Group, you might not use all 
 - `pwd.h` library
 - `sys/sysmacros.h` library
 
-## Forbidden Libraries
+## Forbidden Functions
 You are NOT allowed to use:
 - `strtok(3)`
 - `system(3)`
